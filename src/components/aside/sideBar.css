@@ -1,0 +1,45 @@
+/* ===== DASHBOARD SIDEBAR ===== */
+.sidebar {
+    min-height: 100vh;
+    background-color: white;
+    color: black;
+    position: relative;
+}
+
+.sidebar__logo {
+    padding: 2rem 1.25rem;
+    color: #00ADFD;
+    margin-bottom: 5rem;
+}
+
+.sidebar__logo h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-left: 2rem;
+}
+
+.sidebar__menu {
+    width: 18rem ;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+}
+
+.menu__option {
+    display: block;
+    width: 100%;
+    color: black;
+    font-size: 1.1rem;
+    padding: 1rem 0 1rem 2rem;
+    
+}
+
+.icon {
+    color: #00aeff;
+}
+
+.miCuenta{    
+    position: absolute;
+    bottom: 0; 
+    border-top: 1px solid rgba(80, 80, 80, 0.363);
+}

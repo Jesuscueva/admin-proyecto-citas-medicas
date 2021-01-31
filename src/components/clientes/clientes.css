@@ -1,0 +1,7 @@
+.clientes__wrapper {
+    background: yellow;
+    margin-top: 16.5rem;
+    height: 100%;
+    height: calc(100vh - 19.5rem);
+    min-height: 31rem;
+}

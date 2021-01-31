@@ -13,14 +13,18 @@ const DashboardScreen = () => {
           </div>
       </div>
 
-      {/* <div className="row bg-gray">
-        <div className="col-xl-8 col-md-12 col-sm-12 p-0">
+      <div className="row bg-gray p-5">
+
+        <div className="col-xl-8 col-md-12 col-sm-12">
           <TablaCitas />
         </div>
-        <div className="col-xl-4 col-md-12 col-sm-12 p-0">
+
+        <div className="col-xl-4 col-md-12 col-sm-12">
           <HistoricoMensual />
         </div>
-      </div> */}
+
+
+      </div>
       </div>
     
   );

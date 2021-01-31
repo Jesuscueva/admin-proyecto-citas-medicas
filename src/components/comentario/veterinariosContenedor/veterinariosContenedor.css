@@ -1,0 +1,7 @@
+.veterinariosContenedor__wrapper {
+    background: yellow;
+    margin-top: 16.5rem;
+    height: calc(100vh - 16.5rem);
+    min-height: 31rem;
+    overflow-y: auto;
+}

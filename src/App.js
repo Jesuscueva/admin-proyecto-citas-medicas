@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import DashboardScreen from "./screens/DashboardScreen";
+import CalendarioScreen from "./screens/CalendarioScreen";
+import VeterinariosScreen from "./screens/VeterinariosScreen";
+import MiCuentaScreen from "./screens/MiCuentaScreen";
+import ComentariosScreen from "./screens/ComentariosScreen";
+import SideBar from "./components/aside/SideBar";
+import './styles.css'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <body>
+    <BrowserRouter>
+      
+        <SideBar />
+        <Switch>
+          <Route path="/calendario" component={CalendarioScreen} />
+          <Route path="/veterinarios" component={VeterinariosScreen} />
+          <Route path="/comentarios" component={ComentariosScreen} />
+          <Route path="/miCuenta" component={MiCuentaScreen} />
+          <Route path="/" component={DashboardScreen} />
+        </Switch>
+
+    </BrowserRouter>
+    </body>
   );
-}
+};
 
 export default App;

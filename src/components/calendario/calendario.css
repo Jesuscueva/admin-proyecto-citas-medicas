@@ -1,0 +1,7 @@
+.calendario__wrapper {
+    width: 100%;
+    background-color: white;
+    height: calc(100vh - 19.5rem);
+    min-height: 31rem;
+    border-radius: 0.65rem;
+}

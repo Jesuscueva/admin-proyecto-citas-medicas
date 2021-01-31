@@ -1,0 +1,7 @@
+.comentariosContenedor__wrapper {
+    background: white;
+    height: calc(100vh - 16.5rem);
+    min-height: 31rem;
+    overflow-y: auto;
+    border-radius: 0.65rem;
+}
