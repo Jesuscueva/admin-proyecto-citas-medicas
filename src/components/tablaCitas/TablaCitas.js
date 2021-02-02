@@ -3,7 +3,7 @@ import './tablaCitas.css'
 
 const TablaCitas = ({ citas }) => {
     return (
-        <div className="tablaCitas__wrapper shadow row">
+        <div className="tablaCitas__wrapper shadow">
             <h1>Citas</h1>
             <table className="table table-striped table-hover table-bordered">
                 <thead className="table-light" >
