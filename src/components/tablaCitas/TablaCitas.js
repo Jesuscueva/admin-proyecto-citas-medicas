@@ -4,7 +4,7 @@ import './tablaCitas.css'
 const TablaCitas = () => {
     return (
         <div className="tablaCitas__wrapper shadow">
-            <h1>Tabla Citas</h1>
+            <h1 className="titulo">Tabla Citas</h1>
         </div>
     )
 }
