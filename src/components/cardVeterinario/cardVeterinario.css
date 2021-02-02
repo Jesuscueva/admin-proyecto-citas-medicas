@@ -3,4 +3,9 @@
     width: 100%;
     height: 28rem;
     border-radius: 0.65rem;
+    margin:2rem 0 0 0;
+}
+
+.parrafo_descripcion{
+    padding: 1rem 3rem;
 }

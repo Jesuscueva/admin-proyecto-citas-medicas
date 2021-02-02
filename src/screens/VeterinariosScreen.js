@@ -9,13 +9,13 @@ const VeterinariosScreen = () => {
                 <h1>Lista</h1>
             </div>
             <div className="row p-5">
-                <div className="col-3">
+                <div className="col-xl-4 col-md-6 col-sm-12">
                     <CardVeterinario/>
                 </div>
-                <div className="col-3">
+                <div className="col-xl-4 col-md-6 col-sm-12">
                     <CardVeterinario/>
                 </div>
-                <div className="col-3">
+                <div className="col-xl-4 col-md-6 col-sm-12">
                     <CardVeterinario/>
                 </div>
             </div>

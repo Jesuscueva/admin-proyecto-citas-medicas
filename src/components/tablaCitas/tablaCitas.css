@@ -4,4 +4,12 @@
     height: calc(100vh - 15rem - 4.5rem);
     min-height: 31rem;
     border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin:0 0 2rem 0;
 }
+
+.titulo{
+
+    font-size: 2rem;
+    
+    }
