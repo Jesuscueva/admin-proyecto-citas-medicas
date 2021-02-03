@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import BarraDeEstadisticas  from "./../components/barraDeEstadisticas/BarraDeEstadisticas" 
+ 
 import HistoricoMensual from "./../components/historicoMensual/HistoricoMensual";
 import TablaCitas from "./../components/tablaCitas/TablaCitas";
 import "./../styles.css";
 import { getCitas } from "./../servicios/servicios"
+import BarraDeEstadisticas from "../components/barraDeEstadisticas/BarraDeEstadisticas";
 
 const DashboardScreen = () => {
   
@@ -20,7 +21,7 @@ const DashboardScreen = () => {
     <div className="content__wrapper">
       <div className="row">
           <div className="col-12">
-            <BarraDeEstadisticas/>
+            <BarraDeEstadisticas citas={citas}/>
           </div>
       </div>
 
@@ -31,7 +32,7 @@ const DashboardScreen = () => {
         </div>
 
         <div className="col-xl-4 col-md-12 col-sm-12">
-          <HistoricoMensual />
+          <HistoricoMensual citas={citas}/>
         </div>
 
 
