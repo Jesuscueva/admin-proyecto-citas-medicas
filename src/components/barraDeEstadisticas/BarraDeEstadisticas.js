@@ -2,25 +2,16 @@ import React from "react";
 import WidgetDeEstadistica from "../widgetEstadisticas/WidgetEstadisticas";
 import "./barraDeEstadisticas.css";
 
-const BarraDeEstadisticas = ( {citas} ) => {
+const BarraDeEstadisticas = ( {citas, admin} ) => {
 
-  let labels = citas.map(cita => {
-    return citas.fecha;
-  })
-
-  let data =   {
-    labels: labels,
-    datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-    }]
-}
+  
 
 
 
   return (
     <section className="row stads__wrapper">
+
+        <h1 className="text-white col-12 p-5">Hola {admin}</h1>
 
         <div className="col-xl-3 col-md-4 col-sm-6 d-flex justify-content-center align-items-end">
           <WidgetDeEstadistica citas={citas}/>

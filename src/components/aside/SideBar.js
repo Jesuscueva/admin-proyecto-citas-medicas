@@ -15,13 +15,8 @@ const SideBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className="menu__option" to="/calendario">
-            <i className="icon mr-3 far fa-calendar-alt"></i>Calendario
-          </NavLink>
-        </li>
-        <li>
           <NavLink className="menu__option" to="/comentarios">
-            <i className="icon mr-3 fas fa-user-md"></i>Comentarios
+            <i className="icon mr-3 fas fa-user-md"></i>Reseñas
           </NavLink>
         </li>
         <li>

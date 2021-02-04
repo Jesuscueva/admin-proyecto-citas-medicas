@@ -22,6 +22,10 @@ a:hover{
     flex: 1;
 }
 
-.bg-gray {
-    background: #F1F4F9;
+.bg-gradient-primary {
+    background: linear-gradient(to right, #11ceef, #1172EF);
+}
+
+.bg-primary {
+    background-color: #11ceef !important;
 }

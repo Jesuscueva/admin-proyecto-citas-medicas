@@ -3,16 +3,23 @@ import React, { useState, useEffect } from "react";
 import HistoricoMensual from "./../components/historicoMensual/HistoricoMensual";
 import TablaCitas from "./../components/tablaCitas/TablaCitas";
 import "./../styles.css";
-import { getCitas } from "./../servicios/servicios"
+import { getCitas, getDatosConsultorio } from "./../servicios/servicios"
 import BarraDeEstadisticas from "../components/barraDeEstadisticas/BarraDeEstadisticas";
 
 const DashboardScreen = () => {
   
   const [citas, setCitas] = useState([]);
+  const [admin, setAdmin] = useState([]);
+
+  useEffect(()=>{
+    getDatosConsultorio().then(data=>{
+      setAdmin(data[0].admin);
+    })
+  }, [])
+
 
   useEffect(() => {
     getCitas().then(data => {
-      console.log(data);
       setCitas(data);
     });
   }, []);
@@ -21,7 +28,7 @@ const DashboardScreen = () => {
     <div className="content__wrapper">
       <div className="row">
           <div className="col-12">
-            <BarraDeEstadisticas citas={citas}/>
+            <BarraDeEstadisticas citas={citas} admin={admin}/>
           </div>
       </div>
 

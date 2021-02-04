@@ -5,4 +5,4 @@ export const URL_BACKEND1 = "https://600c6123f979dd001745bec9.mockapi.io/api";
 
 //BACKEND CON INFO DEL CONSULTORIO: DATOS DEL ADMIN, DIRECCION DEL CONSULTORIO, CELULAR Y REDES
 
-export const URL_BACKEND2 = "https://6018d613971d850017a404d4.mockapi.io/Consultorio";
+export const URL_BACKEND2 = "https://6018d613971d850017a404d4.mockapi.io/";
