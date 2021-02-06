@@ -8,22 +8,25 @@ import MiCuentaScreen from "./screens/MiCuentaScreen";
 import ComentariosScreen from "./screens/ComentariosScreen";
 import SideBar from "./components/aside/SideBar";
 import './styles.css'
+import PosState from "./components/cardVeterinario/context/PosState";
 
 const App = () => {
   return (
     <body>
+    <PosState>
     <BrowserRouter>
       
-        <SideBar />
-        <Switch>
-          <Route path="/calendario" component={CalendarioScreen} />
-          <Route path="/veterinarios" component={VeterinariosScreen} />
-          <Route path="/comentarios" component={ComentariosScreen} />
-          <Route path="/miCuenta" component={MiCuentaScreen} />
-          <Route path="/" component={DashboardScreen} />
-        </Switch>
+      <SideBar />
+      <Switch>
+        <Route path="/calendario" component={CalendarioScreen} />
+        <Route path="/veterinarios" component={VeterinariosScreen} />
+        <Route path="/comentarios" component={ComentariosScreen} />
+        <Route path="/miCuenta" component={MiCuentaScreen} />
+        <Route path="/" component={DashboardScreen} />
+      </Switch>
 
-    </BrowserRouter>
+  </BrowserRouter>
+    </PosState>
     </body>
   );
 };
