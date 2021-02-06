@@ -1,9 +1,13 @@
 .veterinario__wrapper {
     background-color: white;
     width: 100%;
+<<<<<<< HEAD
     height: 320px;
     display: flex;
     flex-direction: column;
+=======
+    height: 20rem;
+>>>>>>> 2c4a2ba3ba9b13c926ea6f024d6d7e51ef3910c0
     border-radius: 0.65rem;
     margin:2rem 0 0 0;
 }

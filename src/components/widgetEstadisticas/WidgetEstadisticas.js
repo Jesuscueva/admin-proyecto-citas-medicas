@@ -1,12 +1,12 @@
 import React from "react";
 import "./widgetEstadisticas.css";
 
-const WidgetDeEstadistica = () => {
+const WidgetDeEstadistica = ( {titulo ,dato} ) => {
   return (
     <div className="widget__wrapper d-flex justify-content-between align-items-center p-2">
       <div className="datos">
-        <h2>Datos</h2>
-        <p>80</p>
+        <h4>{titulo}</h4>
+        <p>{dato}</p>
       </div>
 
       <div className="">

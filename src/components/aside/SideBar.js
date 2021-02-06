@@ -4,7 +4,7 @@ import "./sideBar.css";
 
 const SideBar = () => {
   return (
-    <div class="sidebar shadow">
+    <div className="sidebar shadow">
       <div className="sidebar__logo font-weight-bold">
         <h2>Logo</h2>
       </div>

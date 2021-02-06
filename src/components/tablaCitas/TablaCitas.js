@@ -17,8 +17,8 @@ const TablaCitas = ({ citas }) => {
                 </thead>
                 <tbody>
                 {
-                    citas.map(cita => {
-                        return (<tr>
+                    citas.map((cita, i)=> {
+                        return (<tr key={i}>
                             <th>{cita.id}</th>
                             <td>{cita.userId}</td>
                             <td>{cita.fecha}</td>

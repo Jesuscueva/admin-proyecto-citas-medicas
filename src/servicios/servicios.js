@@ -58,7 +58,7 @@ export const getDatosConsultorio = async () => {
 }
 
 export const putDatosConsultorio = async (objDatosConsultorio)  => {
-    const peticion = await fetch(`${URL_BACKEND2}/Consultorio/${objDatosConsultorio.prop_id}`, {
+    const peticion = await fetch(`${URL_BACKEND2}/Consultorio/${objDatosConsultorio.id}`, {
         method: "PUT", 
         body: JSON.stringify(objDatosConsultorio),
         headers: {
