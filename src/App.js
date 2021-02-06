@@ -11,7 +11,7 @@ import './styles.css'
 
 const App = () => {
   return (
-    <body>
+    <main>
     <BrowserRouter>
       
         <SideBar />
@@ -24,7 +24,7 @@ const App = () => {
         </Switch>
 
     </BrowserRouter>
-    </body>
+    </main>
   );
 };
 

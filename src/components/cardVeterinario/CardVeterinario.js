@@ -1,11 +1,11 @@
 import React from 'react'
 import './cardVeterinario.css'
 
-const CardVeterinario = () => {
+const CardVeterinario = ({veterinario}) => {
     return (
         <div className="cardVeterinario__wrapper shadow text-center pt-2">
-            <h2>Veterinario</h2>
-            <p className="parrafo_descripcion">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed aut isimilique ab sit quisquam, nesciunt incidunt necessitatibus?</p>
+            <h3>{veterinario.nombre}</h3>
+            <p className="parrafo_descripcion">{veterinario.mensaje}</p>
            
         </div>
     )

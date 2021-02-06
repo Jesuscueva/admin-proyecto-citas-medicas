@@ -8,14 +8,15 @@ import '../styles.css'
 
 const MiCuentaScreen = () => {
 
-    let [datosConsultorio, setDatosConsultorio] = useState([""]);
+    const [datosConsultorio, setDatosConsultorio] = useState([""]);
 
+ 
     useEffect(()=> {
         getDatosConsultorio().then((data)=> {
             setDatosConsultorio(data[0]);
-            console.log(data[0]);
         })
     },[]);
+
 
 
 
@@ -23,16 +24,16 @@ const MiCuentaScreen = () => {
         <div className="content__wrapper bg-gray">
             <div className="row">
                 <div className="col-12">
-                    <PerfilHeader adminName={datosConsultorio.admin}/>
+                    <PerfilHeader adminName={datosConsultorio.firstName}/>
                 </div>
             </div>
 
             <div className="row p-5">
                 <div className="col-8">
-                    <FormularioMiCuenta/>
+                    <FormularioMiCuenta setDatosConsultorio={setDatosConsultorio}/>
                 </div>
                 <div className="col-4">
-                    {/* <CardPerfil/> */}
+                    <CardPerfil  datosConsultorio={datosConsultorio} />
                 </div>
             </div>
         
