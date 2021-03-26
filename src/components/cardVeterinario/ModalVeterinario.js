@@ -1,120 +1,89 @@
 import React, { useContext, useState } from "react";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Form,
-  Row,
-  Label,
-  Col,
-  Input,
-  FormGroup,
-} from "reactstrap";
+import Swal from "sweetalert2";
+import { putVeterinario } from "../../servicios/servicios";
 import PosContext from "./context/PosContext";
 
-const formVacio = {
-
-    nombre: "",
-    mensaje:"",
-}
 
 
 
 const ModalVeterinario = () => {
     
-    const { modal, setModal, nombre, id} = useContext(PosContext);
+    const { modal, setModal, veterinarioeditar, obtenerVeterinarios} = useContext(PosContext);
+    const [formulario, setFormulario] = useState(veterinarioeditar);
 
     
-    const [formulario, setFormulario] = useState({...formVacio});
   const handleChange = e =>{
     setFormulario({
       ...formulario,
-      id: id,
       [e.target.name]: e.target.value
     })
   }
 
 
+
   const submit = (e)=>{
     e.preventDefault();
-    console.log("formulario enviado")
-    console.log(formulario)
-    setFormulario(formVacio)
-    setModal(false)
-    
+    Swal.fire({
+      title:  `¿Seguro de editar información de ${veterinarioeditar.nombre} ?`,
+      icon: "question",
+      text: "los cambios se guardarán en la base de datos",
+      showCancelButton: true
+    }).then(rpta=> {
+      if(rpta.isConfirmed){
+        putVeterinario(formulario).then(data => {
+          if(data.id) {
+            setModal(false)
+            obtenerVeterinarios()
+            Swal.fire({
+              title: "Atualizacion exitosa",
+              icon: "success",
+              timer: 700,
+              showCancelButton: false 
+            })
+          }
+        })
+      }
+    })
   }
 
 
   return (
     <div>
-      <Modal isOpen={modal} className="modal__cita">
-        <ModalHeader className="titulo_modal">🥼🩺Editar datos de {nombre} 🥼🩺</ModalHeader>
-        <ModalBody>
-          <Form onSubmit={submit}>
-            <Row form>
-            <Col md={12}>
-              <FormGroup>
-              <Label for="id" >
-                Id:
-              </Label>
-                <Input
-                onChange={handleChange}
-                  type="number"
-                  name="id"
-                  id="id"
-                  value={id}
-                />
-              </FormGroup>
-              </Col>
-              <Col md={12}>
-              <FormGroup>
-              <Label for="nombre" >
-                Nombre:
-              </Label>
-                <Input
-                onChange={handleChange}
-                  type="text"
-                  name="nombre"
-                  id="nombre"
-                  value={formulario.nombre}
-                />
-              </FormGroup>
-              </Col>
-            <br/>
-              <Col md={12}>
-            <FormGroup>
-            <Label for="mensaje">
-               Sobre ti:
-              </Label>
-                <Input
-                onChange={handleChange}
-                  type="textarea"
-                  name="mensaje"
-                  id="mensaje"
-                 value={formulario.mensaje}
-                />
-            </FormGroup>
-              </Col>   
-            
-            </Row>
-            
-            <br/>
-            <Button color="primary" type="submit">
-              Guardar Cambios   
-            </Button>{" "}
-            <Button
-              color="danger"
-              onClick={() => {
-                setModal(false);
-              }}
-            >
-              Cancelar
-            </Button>
-          </Form>
-        </ModalBody>
-      </Modal>
+      <form onSubmit={submit}>
+        <div className="form-group">
+          <label htmlFor="id">Id:</label>
+          <input type="number" className="form-control"
+          value={formulario.id}
+          id="id"
+          name="id"
+          onChange={handleChange}
+          readOnly
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="nombre">
+            Nombre Veterinario:
+          </label>
+          <input type="text" name="nombre" id="nombre"
+            className="form-control "
+            onChange={handleChange}
+            value={formulario.nombre}/>
+        </div>
+        <div className="form-group">
+         <label htmlFor="mensaje">Informacion de {formulario.nombre}</label>
+          <textarea
+          className="form-control"
+          value={formulario.mensaje}
+          name="mensaje" id="mensaje"
+          onChange={handleChange}
+          ></textarea>
+        </div>
+        <div className="form-group contenedor__btn">
+          <button className="btn btn-primary"
+          type="submit"
+          > Editar Información</button>
+        </div>
+      </form>
     </div>
   );
 };

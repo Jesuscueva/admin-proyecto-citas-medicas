@@ -5,7 +5,7 @@ import './comentariosContenedor.css'
 const ComentariosContenedor = () => {
     return (
         <div className="comentariosContenedor__wrapper shadow">
-            <Comentario/>
+            {/* <Comentario/> */}
         </div>
     )
 }

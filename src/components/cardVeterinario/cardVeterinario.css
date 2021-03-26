@@ -1,26 +1,75 @@
 .veterinario__wrapper {
-    background-color: white;
+    /* background-color: rgb(192, 159, 159); */
     width: 100%;
-<<<<<<< HEAD
+
     height: 320px;
     display: flex;
     flex-direction: column;
-=======
+
     height: 20rem;
->>>>>>> 2c4a2ba3ba9b13c926ea6f024d6d7e51ef3910c0
     border-radius: 0.65rem;
     margin:2rem 0 0 0;
 }
-
+.veterinario_card{
+    /* background-color: darkcyan; */
+    border-radius: 20px;
+    height: 300px;
+    box-shadow: 2px 3px 4px 1px #10C6E8;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    text-align: center;
+    /* justify-content: center; */
+    padding: 17px 0;
+}
 .nombre_vete {
+    margin-top: 15px;
     height: 86px;
-
+    /* background-color: blueviolet; */
 }
 
 .parrafo_descripcion{
-    height: 150px;
+    height: 110px;
+    /* background-color: brown; */
 
 }
 .titulo_modal {
     text-align: center;
 }
+.contenedor__btn{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+button:hover{
+    transition: .5s all ease;
+    transform: scale(1.1);
+}
+.agregarVete {
+    background-color: green;
+    color: #fff;
+    font-size: 35px;
+    border-radius: 100%;
+    padding: 0px 0px 9px 0px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    /* bottom: 30px; */
+    top: 150px;
+    right: 20px;
+    z-index: 99;
+    outline: none;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+@media screen and (max-width: 580px){
+    .parrafo_descripcion{
+        /* overflow: hidden;
+        text-overflow: ellipsis; */
+        /* background-color: blueviolet; */
+    }
+}
+

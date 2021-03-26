@@ -40,7 +40,7 @@ export const getVeterinarios = async () => {
 }
 
 export const postVeterinario = async (objVeterinario) => {
-    const peticion = await fetch(`${URL_BACKEND1}/veterinariso`, {
+    const peticion = await fetch(`${URL_BACKEND1}/veterinarios`, {
         method: "POST",
         body: JSON.stringify(objVeterinario),
         headers: {
@@ -48,6 +48,26 @@ export const postVeterinario = async (objVeterinario) => {
         }
     })
     const data = await peticion.json();
+    return data
+}
+
+export const putVeterinario = async(objVeterinario) => {
+    const peticion = await fetch(`${URL_BACKEND1}/veterinarios/${objVeterinario.id}`, {
+        method: "PUT",
+        body: JSON.stringify(objVeterinario),
+        headers: {
+            "content-type": "application/json"
+        }
+    })
+    const data = await peticion.json()
+    return data
+}
+
+export const deleteVeterinario = async(vetId) => {
+    const peticion = await fetch(`${URL_BACKEND1}/veterinarios/${vetId}`, {
+        method: "DELETE"
+    })
+    const data = await peticion.json()
     return data
 }
 

@@ -1,49 +1,50 @@
-import React, { useReducer } from 'react'
-import PosContext from './PosContext'
-import PosReducer from './PosReducer'
+import React, { useEffect, useReducer, useState } from "react";
+import { getVeterinarios } from "../../../servicios/servicios";
+import PosContext from "./PosContext";
+import PosReducer from "./PosReducer";
 
-const PosState = ({children}) => {
+const PosState = ({ children }) => {
+  const [state, dispatch] = useReducer(PosReducer, {
+    modal: false,
+    nombre: "",
+    id: 0,
+  });
 
-    const [state, dispatch] = useReducer(PosReducer, {
-        modal : false,
-        nombre: "",
-        id:0
-    })
+  const [veterinarios, setVeterinarios] = useState([]);
 
-    const setModal = (valor)=>{
-        dispatch({
-            type: "MODAL",
-            data: valor
-        })
-    }
-    const setNombre = (valor)=>{
-        dispatch({
-            type: "NOMBRE",
-            data: valor
-        })
-    }
-    const setId = (valor)=>{
-        dispatch({
-            type: "ID",
-            data: valor
-        })
-    }
+  const obtenerVeterinarios = () =>{
+    getVeterinarios().then((data) => {
+      setVeterinarios(data);
+    });
+  }
+  useEffect(() => {
+   obtenerVeterinarios()
+  }, []);
 
-    return (
-        <PosContext.Provider value={
-            {
-                modal: state.modal,
-                setModal: setModal,
+  const [veterinarioeditar, setVeterinarioEditar] = useState([]);
 
-                nombre: state.nombre,
-                id: state.id,
-                setId: setId,
-                setNombre: setNombre
-            }
-        } >
-           {children}
-        </PosContext.Provider>
-    )
-}
+  const setModal = (valor) => {
+    dispatch({
+      type: "MODAL",
+      data: valor,
+    });
+  };
 
-export default PosState
+  return (
+    <PosContext.Provider
+      value={{
+        modal: state.modal,
+        setModal: setModal,
+        veterinarioeditar: veterinarioeditar,
+        setVeterinarioEditar: setVeterinarioEditar,
+        veterinarios:veterinarios,
+        setVeterinarios:setVeterinarios,
+        obtenerVeterinarios: obtenerVeterinarios
+      }}
+    >
+      {children}
+    </PosContext.Provider>
+  );
+};
+
+export default PosState;

@@ -24,7 +24,7 @@ const ComentariosScreen = () => {
       <div className="row p-5 bg-gray" style={{height:"calc(100vh - 12rem)", overflowY:'scroll'}}>
         {comentarios.map((comentario) => {
           return (
-            <div className="col-8 mb-4">
+            <div className="col-12 col-sm-12  mb-5">
               <Comentario comentario={comentario} />
             </div>
           );

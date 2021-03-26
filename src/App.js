@@ -12,14 +12,13 @@ import PosState from "./components/cardVeterinario/context/PosState";
 
 const App = () => {
   return (
-<<<<<<< HEAD
-    <body>
-    <PosState>
-=======
+
+    
     <main>
->>>>>>> 2c4a2ba3ba9b13c926ea6f024d6d7e51ef3910c0
+
+      <PosState>
     <BrowserRouter>
-      
+    
       <SideBar />
       <Switch>
         <Route path="/calendario" component={CalendarioScreen} />
@@ -28,15 +27,10 @@ const App = () => {
         <Route path="/miCuenta" component={MiCuentaScreen} />
         <Route path="/" component={DashboardScreen} />
       </Switch>
-
-<<<<<<< HEAD
   </BrowserRouter>
     </PosState>
-    </body>
-=======
-    </BrowserRouter>
+
     </main>
->>>>>>> 2c4a2ba3ba9b13c926ea6f024d6d7e51ef3910c0
   );
 };
 

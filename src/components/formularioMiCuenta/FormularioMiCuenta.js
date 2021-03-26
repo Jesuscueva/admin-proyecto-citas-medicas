@@ -181,6 +181,7 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
             id="inputProvincia"
           />
         </div>
+        
         <div class="col-md-4 mb-5">
           <label for="inputCiudad" class="form-label">
             Ciudad

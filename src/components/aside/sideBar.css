@@ -4,12 +4,32 @@
     background-color: white;
     color: black;
     position: relative;
+    width: 230px;
+    transition: .9s all ease-out;
+}
+.bar {
+    display: none;
+}
+.exit_bar{
+    /* display: none; */
+    display: flex;
+    color: black;
+    font-size: 30px;
+}
+.exit_bar:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
 }
 
 .sidebar__logo {
-    padding: 2rem 1.25rem;
     color: #00ADFD;
     margin-bottom: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 30px 0;
 }
 
 .sidebar__logo h2 {
@@ -33,6 +53,37 @@
     padding: 1rem 0 1rem 2rem;
     
 }
+.sidebar.open{
+    display: none;
+}
+
+.openbar {
+    transition: 0.7s all ease-out;
+    display: flex;
+    z-index: 1;
+        transition: 0.8s all ease-in-out;
+        display: flex;
+        position: absolute;
+        left: 17px;
+        top: 17px;
+        font-size: 32px;
+}
+.openbar:hover {
+    transition: 0.3s all ease-out;
+    cursor: pointer;
+    color: #fff;
+}
+.openbar.desactivado{
+    transition: 0.7s all ease-out;
+    display: none;
+}
+
+.sidebar.open .sidebar__logo h2 {
+    margin-left: 0;
+}
+.sidebar.open .exit_bar i{
+    display: none;
+}
 
 .icon {
     color: #00aeff;
@@ -42,4 +93,11 @@
     position: absolute;
     bottom: 0; 
     border-top: 1px solid rgba(80, 80, 80, 0.363);
+}
+
+@media screen and (max-width:700px) {
+    .sidebar{
+        transition: 0.5 all ease-in;
+        width: 200px
+    }
 }

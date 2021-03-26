@@ -29,10 +29,10 @@ const MiCuentaScreen = () => {
             </div>
 
             <div className="row p-5">
-                <div className="col-8">
+                <div className="col-md-8 col-ms-12 mb-4">
                     <FormularioMiCuenta setDatosConsultorio={setDatosConsultorio}/>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-ms-12 mb-4 mt-4" >
                     <CardPerfil  datosConsultorio={datosConsultorio} />
                 </div>
             </div>
