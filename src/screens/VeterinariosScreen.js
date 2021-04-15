@@ -19,6 +19,7 @@ const VeterinariosScreen = () => {
   const [modalPrueba, setModalPrueba] = useState(false)
 
   const [masInfo, setMasInfo] = useState(false)
+  
 
   const eliminar = vetId => {
     // console.log(vetId)
@@ -63,12 +64,14 @@ const VeterinariosScreen = () => {
         className="row p-5"
         style={{ height: "calc(100vh - 12rem)", overflowY: "scroll" }}
       >
-        {veterinarios.map((veterinario, i) => {
+        {
+          veterinarios.success? 
+          veterinarios.content.map((veterinario, i) => {
           return (
             <div className="col-xl-4 col-md-6 col-sm-12 mt-5">
               <div className="veterinario_card">
-                <h3 className="nombre_vete">{veterinario.nombre}</h3>
-                <p className="parrafo_descripcion">{veterinario.mensaje.substr(0, 80)}... <a  >Leer más</a> </p>
+                <h3 className="nombre_vete">{veterinario.veterinarioNombre +" " + veterinario.veterinarioApellido}</h3>
+                <p className="parrafo_descripcion">{veterinario.veterinarioDescripcion.substr(0, 80)}... <a  >Leer más</a> </p>
                 <p className="contenedor__btn">
                   <button
                     onClick={() => {
@@ -88,7 +91,14 @@ const VeterinariosScreen = () => {
               </div>
             </div>
           );
-        })}
+        }) :
+        <div className="col-xl-4 col-md-6 col-sm-12 mt-5">
+          cargando...
+          <div class="spinner-border text-info" role="status">
+              <span class="visually-hidden"></span>
+          </div>
+        </div>
+        }
       </div>
       {/* <Modal isOpen={modal} className="modal__cita">
         <ModalHeader className="titulo_modal">🥼🩺Editar datos del Doctor  🥼🩺</ModalHeader>

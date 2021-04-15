@@ -14,11 +14,12 @@ const PosState = ({ children }) => {
 
   const obtenerVeterinarios = () =>{
     getVeterinarios().then((data) => {
+      console.log(data)
       setVeterinarios(data);
     });
   }
   useEffect(() => {
-   obtenerVeterinarios()
+  obtenerVeterinarios()
   }, []);
 
   const [veterinarioeditar, setVeterinarioEditar] = useState([]);

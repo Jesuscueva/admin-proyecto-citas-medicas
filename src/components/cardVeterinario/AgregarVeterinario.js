@@ -4,16 +4,25 @@ import { postVeterinario } from "../../servicios/servicios";
 import PosContext from "./context/PosContext";
 
 const formularioVacio = {
-  nombre: "",
-  mensaje: "",
-  foto: "",
+  veterinarioNombre: "",
+  veterinarioApellido: "",
+  veterinarioDescripcion: "",
+  veterinaria: 1,
+  veterinarioFoto: "",
 };
 const AgregarVeterinario = () => {
 
   const [formulario, setFormulario] = useState({ ...formularioVacio });
   const { obtenerVeterinarios} = useContext(PosContext);
 
+  const valorImg = (e) =>{
+    setFormulario({
+      ...formulario,
+      veterinarioFoto: e.target.files[0],
+    })
+  }
   const handleChange = (e) => {
+    // console.log(e.target.files[0])
     setFormulario({
       ...formulario,
       [e.target.name]: e.target.value,
@@ -31,21 +40,23 @@ const AgregarVeterinario = () => {
         if(rpta.isConfirmed){
           // console.log(formulario)
             postVeterinario(formulario).then(data=>{
-                if(data.id){
-                    setFormulario(formularioVacio)
-                    obtenerVeterinarios()
-                    Swal.fire({
-                        title: "Hecho!",
-                        text: "El Veterinario ha sido creado con éxito",
-                        icon: "success",
-                        showCancelButton: false,
-                        timer: 700,
-                        position: "top-right"
-                      });
-                }
+              console.log(data)
+                // if(data.id){
+                //     setFormulario(formularioVacio)
+                //     obtenerVeterinarios()
+                //     Swal.fire({
+                //         title: "Hecho!",
+                //         text: "El Veterinario ha sido creado con éxito",
+                //         icon: "success",
+                //         showCancelButton: false,
+                //         timer: 700,
+                //         position: "top-right"
+                //       });
+                // }
             })
         }
     })
+    console.log(formulario)
   };
 
 
@@ -54,32 +65,42 @@ const AgregarVeterinario = () => {
     <div>
       <form onSubmit={submit}>
         <div className="form-group">
-          <label htmlFor="nombre">Nombre del Vete.:</label>
+          <label htmlFor="veterinarioNombre">Nombre del Vete.:</label>
           <input
             type="text"
             className="form-control"
-            name="nombre"
-            id="nombre"
-            value={formulario.nombre}
+            name="veterinarioNombre"
+            id="veterinarioNombre"
+            value={formulario.veterinarioNombre}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="descrip">Info del veterianrio</label>
+          <label htmlFor="veterinarioApellido">Apellido del Vete.:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="veterinarioApellido"
+            id="veterinarioApellido"
+            value={formulario.veterinarioApellido}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="veterinarioDescripcion">Info del veterianrio</label>
           <textarea
           className="form-control"
-          value={formulario.mensaje}
-          name="mensaje" id="mensaje"
+          value={formulario.veterinarioDescripcion}
+          name="veterinarioDescripcion" id="veterinarioDescripcion"
           onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="foto">Foto del veterianrio</label>
-          <textarea
-            value={formulario.foto}
-            onChange={handleChange}
-            name="foto"
-            id="foto"
+          <label htmlFor="veterinarioFoto">Foto del veterianrio</label>
+          <input type="file"
+            onChange={valorImg}
+            name="veterinarioFoto"
+            id="veterinarioFoto"
             className="form-control"
           />
         </div>
