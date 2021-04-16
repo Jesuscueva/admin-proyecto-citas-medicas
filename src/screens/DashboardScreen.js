@@ -31,23 +31,23 @@ const DashboardScreen = () => {
   }
 
 
- useEffect(()=>{
+//  useEffect(()=>{
 
-  getCitas().then(data => {
-    calcularCitas(data);
-    setCitas(data);
-    });
+//   getCitas().then(data => {
+//     calcularCitas(data);
+//     setCitas(data);
+//     });
   
 
-   getUsuarios().then(data=> {
-     setCantidadDeUsuarios(data.length)
-   })
+//    getUsuarios().then(data=> {
+//      setCantidadDeUsuarios(data.length)
+//    })
    
-   getDatosConsultorio().then(data=>{
-     setAdmin(data[0].firstName);
+//    getDatosConsultorio().then(data=>{
+//      setAdmin(data[0].firstName);
 
-   })
- }, [])
+//    })
+//  }, [])
 
 
   return (

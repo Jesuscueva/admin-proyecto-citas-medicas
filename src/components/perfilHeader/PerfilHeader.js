@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AdminContext from '../../context/adminContext'
 import './perfilHeader.css'
 
-const PerfilHeader = ({adminName}) => {
+const PerfilHeader = () => {
+    const {nombre, apellido} = useContext(AdminContext)
     return (
         <div className="perfilHeader__wrapper p-5 d-flex align-items-center justify-content-end" >
-            <h1 className="mb-5">Hola {adminName}</h1>
+            <h1 className="mb-5">Hola {`${nombre} ${apellido}`}</h1>
         </div>
     )
 }

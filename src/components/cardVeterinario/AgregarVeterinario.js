@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import AdminContext from "../../context/adminContext";
 import { postVeterinario } from "../../servicios/servicios";
 import PosContext from "./context/PosContext";
 
@@ -14,6 +15,8 @@ const AgregarVeterinario = () => {
 
   const [formulario, setFormulario] = useState({ ...formularioVacio });
   const { obtenerVeterinarios} = useContext(PosContext);
+  const {token} = useContext(AdminContext)
+
 
   const valorImg = (e) =>{
     setFormulario({
@@ -22,7 +25,6 @@ const AgregarVeterinario = () => {
     })
   }
   const handleChange = (e) => {
-    // console.log(e.target.files[0])
     setFormulario({
       ...formulario,
       [e.target.name]: e.target.value,
@@ -31,6 +33,14 @@ const AgregarVeterinario = () => {
 
   const submit = (e) => {
     e.preventDefault();
+    console.log(formulario)
+    const formData= new FormData()
+    formData.append("veterinarioNombre", formulario.veterinarioNombre)
+    formData.append("veterinarioApellido", formulario.veterinarioApellido)
+    formData.append("veterinarioDescripcion", formulario.veterinarioDescripcion)
+    formData.append("veterinaria", formulario.veterinaria)
+    formData.append("veterinarioFoto", formulario.veterinarioFoto)
+    console.log(formData)
     Swal.fire({
       title: "¿Seguro de crear Nuevo Veterinario?",
       icon: "question",
@@ -38,25 +48,23 @@ const AgregarVeterinario = () => {
       showCancelButton: true,
     }).then(rpta => {
         if(rpta.isConfirmed){
-          // console.log(formulario)
-            postVeterinario(formulario).then(data=>{
+            postVeterinario( formData, token ).then(data=>{
               console.log(data)
-                // if(data.id){
-                //     setFormulario(formularioVacio)
-                //     obtenerVeterinarios()
-                //     Swal.fire({
-                //         title: "Hecho!",
-                //         text: "El Veterinario ha sido creado con éxito",
-                //         icon: "success",
-                //         showCancelButton: false,
-                //         timer: 700,
-                //         position: "top-right"
-                //       });
-                // }
+                if(data.content.veterinarioId){
+                    setFormulario(formularioVacio)
+                    obtenerVeterinarios()
+                    Swal.fire({
+                        title: "Hecho!",
+                        text: "El Veterinario ha sido creado con éxito",
+                        icon: "success",
+                        showCancelButton: false,
+                        timer: 700,
+                        position: "top-right"
+                      });
+                }
             })
         }
     })
-    console.log(formulario)
   };
 
 

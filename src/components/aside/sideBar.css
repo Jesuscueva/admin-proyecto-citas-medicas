@@ -1,11 +1,15 @@
 /* ===== DASHBOARD SIDEBAR ===== */
 .sidebar {
-    min-height: 100vh;
+    height: 100vh;
     background-color: white;
     color: black;
     position: relative;
     width: 230px;
     transition: .9s all ease-out;
+    margin-right: 0px;
+}
+.rutas {
+    display: flex;
 }
 .bar {
     display: none;
@@ -89,10 +93,16 @@
     color: #00aeff;
 }
 
+
 .miCuenta{    
     position: absolute;
     bottom: 0; 
     border-top: 1px solid rgba(80, 80, 80, 0.363);
+}
+.salirSesion{
+    width: 220px;
+    border: none,
+    
 }
 
 @media screen and (max-width:700px) {

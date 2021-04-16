@@ -1,4 +1,5 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
+import AdminContext from "../../../context/adminContext";
 import { getVeterinarios } from "../../../servicios/servicios";
 import PosContext from "./PosContext";
 import PosReducer from "./PosReducer";
@@ -9,11 +10,12 @@ const PosState = ({ children }) => {
     nombre: "",
     id: 0,
   });
+  const {token} = useContext(AdminContext)
 
   const [veterinarios, setVeterinarios] = useState([]);
 
   const obtenerVeterinarios = () =>{
-    getVeterinarios().then((data) => {
+    getVeterinarios(token).then((data) => {
       console.log(data)
       setVeterinarios(data);
     });

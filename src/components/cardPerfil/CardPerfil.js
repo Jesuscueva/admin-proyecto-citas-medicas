@@ -1,39 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AdminContext from '../../context/adminContext'
 import './cardPerfil.css'
 
 
-const CardPerfil = ( {datosConsultorio} ) => {
-    console.log("Perfil");
-    console.log(datosConsultorio);
+const CardPerfil = () => {
+
+    const {datosConsultorio} = useContext(AdminContext)
+    const datosVeterinaria = datosConsultorio.content[0]
 
 
     return (
-        <div className="card shadow text-center">
+        <div>
 
-            <div className="card-header pt-4 pb-4 text-white" style={{backgroundColor: '#1172EF'}}>
-                
-            <h3>{datosConsultorio.nombreComercial}</h3>
-            </div>
+            <h3>{datosVeterinaria.veterinariaNombre}</h3>
+            
 
             <div className="card-body">
             <small className="text-muted">Dirección</small>
-                <p>{datosConsultorio.direccion}, {datosConsultorio.ciudad}</p>
+                <p>{datosVeterinaria.veterinariaDireccion}</p>
                 <small className="text-muted">Celular</small>
-                <p>{datosConsultorio.phone}</p>
+                <p>{datosVeterinaria.veterinariaTelefono}</p>
                 <small className="text-muted">Horario</small>
-                <p>{datosConsultorio.horario}</p>
+                <p>{datosVeterinaria.veterinariaHorario}</p>
                 <small className="text-muted">Sobre nosotros</small>
-                <p className="">{datosConsultorio.aboutUs}</p>
+                <p className="">{datosVeterinaria.veterinariaDescripcion}</p>
 
                 <hr/>
-
-            <small className="text-muted">Administrador</small>
-            <p>{datosConsultorio.firstName} {datosConsultorio.lastName}</p>
             <small className="text-muted">Correo</small>
-            <p>{datosConsultorio.email}</p>
+            <p>{datosVeterinaria.veterinariaCorreo}</p>
             </div>
-
-        </div>
+</div>
     )
 }
 

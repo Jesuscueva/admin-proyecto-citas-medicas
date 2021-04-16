@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import AdminContext from "../../context/adminContext";
 import "./sideBar.css";
 
 const SideBar = () => {
+  const { cerrarSesion } = useContext(AdminContext)
+
 
   const [activo, setActivo] = useState(true)
 
@@ -34,22 +37,27 @@ const SideBar = () => {
       </div>
       <ul className="sidebar__menu">
         <li>
-          <NavLink className="menu__option" exact to="/dashboard">
+          <NavLink className="menu__option" exact to="/admin/dashboard">
             <i className="icon mr-3 fas fa-home"></i> Home
           </NavLink>
         </li>
         <li>
-          <NavLink className="menu__option" to="/comentarios">
+          <NavLink className="menu__option" to="/admin/comentarios">
             <i className="icon mr-3 fas fa-user-md"></i>Reseñas
           </NavLink>
         </li>
         <li>
-          <NavLink className="menu__option" to="/veterinarios">
+          <NavLink className="menu__option" to="/admin/veterinarios">
             <i className="icon mr-3 fas fa-user-md"></i>Veterinarios
           </NavLink>
         </li>
         <li>
-          <NavLink className="menu__option miCuenta" to="/miCuenta">
+          {/* <button className="salirSesion" onClick={cerrarSesion}>
+            Cerrar Sesión
+          </button> */}
+        </li>
+        <li>
+          <NavLink className="menu__option miCuenta" to="/admin/miCuenta">
             <i className="icon mr-3 fas fa-user-alt"></i>Mi Cuenta
           </NavLink>
         </li>
