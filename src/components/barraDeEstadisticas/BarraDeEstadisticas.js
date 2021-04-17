@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import WidgetDeEstadistica from "../widgetEstadisticas/WidgetEstadisticas";
+
 import "./barraDeEstadisticas.css";
 
 const BarraDeEstadisticas = ({ adminName, cantidadDeUsuarios, citasXDia, citasXMes }) => {
