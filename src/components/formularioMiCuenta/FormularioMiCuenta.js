@@ -34,7 +34,6 @@ const FormularioMiCuenta = () => {
 
   const editarFormulario = (e) => {
     e.preventDefault();
-    console.log(formulario)
     const formData= new FormData()
     formData.append("veterinariaNombre", formulario.veterinariaNombre)
     formData.append("veterinariaDescripcion", formulario.veterinariaDescripcion)
@@ -45,7 +44,6 @@ const FormularioMiCuenta = () => {
     formData.append("veterinariaCorreo", formulario.veterinariaCorreo)
     putDatosConsultorio(formData, token).then((data) => {
       setFormulario(formularioVacio);
-      console.log(data)
       obtenerVeterinaria();
     });
   };

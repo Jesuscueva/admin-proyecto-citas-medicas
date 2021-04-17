@@ -1,40 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { buscarCitasDelUsuario } from "../../servicios/servicios";
 
+const vacio = {
+    nombre: ""
+}
 
 const Comentario = () => {
 
-    const [usuario, setUsuario] = useState()
+    const [usuario, setUsuario] = useState(vacio)
 
-    const [citas, setCitas] = useState({})
 
     const buscar = (e) =>{
-        setUsuario(
-            e.target.value
-        )
+        setUsuario({
+            [e.target.name]: e.target.value
+        })
     }
-    const [datosUsuario, setDatosUsuarios] = useState([""])
-    const obtenerDatos = (usuario1)=>{
-        buscarCitasDelUsuario(usuario1).then(data=>{
+
+    const [datosUsuario, setDatosUsuarios] = useState([])
+    const obtenerDatos = (valor=" ")=>{
+        buscarCitasDelUsuario(valor).then(data=>{
             setDatosUsuarios(data)
         })
     }
     useEffect(()=>{
         obtenerDatos()
     }, [])
+
+
     const submit = e =>{
         e.preventDefault()
-        obtenerDatos(usuario)
-        console.log(datosUsuario)
+        console.log(usuario)
+        obtenerDatos(usuario.nombre)
+        setUsuario(vacio)
     }
-    // const arrayCitas = citas.content.cita.length
-    // console.log(citas.content)
+
     return (
         <>
         <div className="row mb-5">
             <div className="col">
             <form class="form-inline my-2 my-lg-0" onSubmit={submit}>
-            <input class="col-lg-10 col-sm-10 form-control mr-sm-2" name="buscarUsuario" onChange={buscar} type="search" placeholder="Search" aria-label="Search"/>
+            <input class="col-lg-10 col-sm-10 form-control mr-sm-2" value={usuario.nombre} name="nombre" onChange={buscar} type="search" placeholder="Search" aria-label="Search"/>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
@@ -55,15 +60,21 @@ const Comentario = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    {/* <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>sss</td>
-                        <td>sss</td>
-                    </tr> */}
+                    {
+                        !datosUsuario.success? 
+                                <tr><th className="text-center" colSpan="7">Coloca el Nombre del Usuario</th> </tr> : datosUsuario.content.cita.length === 0? <tr><th className="text-center" colSpan="7">Este usuario no tiene citas</th> </tr> : datosUsuario.content.cita.map((citaUsu)=>{
+                                    return <tr>
+                                            <th scope="row">{datosUsuario.content.usuarioId}</th>
+                                            <td>{datosUsuario.content.usuarioNombre + " "+datosUsuario.content.usuarioApellido }</td>
+                                            <td>{datosUsuario.content.usuarioEmail}</td>
+                                            <td>{datosUsuario.content.usuarioCelular}</td>
+                                            <td>{citaUsu.citaFecha}</td>
+                                            <td>{citaUsu.servicio? citaUsu.servicio.servicioNombre : "No selecciono servicio"}</td>
+                                            <td>{citaUsu.citaEstado === 1 ? "Pendiente": "Cancelado"}</td>
+                                        </tr> 
+                                })
+                    }
+
                 </tbody>
             </table>
             </div>

@@ -16,7 +16,6 @@ const PosState = ({ children }) => {
 
   const obtenerVeterinarios = () =>{
     getVeterinarios(token).then((data) => {
-      console.log(data)
       setVeterinarios(data);
     });
   }

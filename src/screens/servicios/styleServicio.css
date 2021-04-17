@@ -1,0 +1,25 @@
+.perfilHeader__wrapper {
+    background-color: #1172EF;
+    height: 10rem;
+    color: white;
+    /* width: 100%; */
+}
+
+.agregarServi {
+    background-color: green;
+    color: #fff;
+    font-size: 35px;
+    border-radius: 100%;
+    padding: 0px 0px 9px 0px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    /* bottom: 30px; */
+    top: 115px;
+    right: 20px;
+    z-index: 99;
+    outline: none;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}

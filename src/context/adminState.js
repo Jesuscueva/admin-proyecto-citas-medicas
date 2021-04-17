@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
-import { getDatosConsultorio, getVeterinarios } from '../servicios/servicios';
+import { getDatosConsultorio} from '../servicios/servicios';
 import AdminContext from './adminContext'
 
 
 const AdminState = ({children}) => {
-    const history2 = useHistory()
+
     
     const [datosLogin, setDatosLogin] = useState({
         idUsuario : 0,
@@ -36,7 +35,6 @@ const AdminState = ({children}) => {
 
     const obtenerVeterinaria = () => {
         getDatosConsultorio(datosLogin.token).then((data)=> {
-            console.log(data)
             setDatosConsultorio(data);
         })
     }
@@ -44,16 +42,17 @@ const AdminState = ({children}) => {
         obtenerVeterinaria()
     },[]);
 
+    
+    const [editarServicio, setEditarServicio] = useState([])
+
+    const [modal1, setModal1] = useState(false)
 
  
 
     const InicioSesion = token => {
         const payload = token.split(".")[1]
-        console.log(payload)
         const desencriptar = window.atob(payload)
-        console.log(desencriptar)
         const convertirJson = JSON.parse(desencriptar)
-        console.log(convertirJson)
         if (convertirJson.usuarioTipo === 1){
             localStorage.setItem("token", token)
             setDatosLogin({
@@ -92,7 +91,12 @@ const AdminState = ({children}) => {
             cerrarSesion: cerrarSesion,
             datosConsultorio: datosConsultorio,
             obtenerVeterinaria: obtenerVeterinaria,
-            cargando: datosLogin.cargando
+            cargando: datosLogin.cargando,
+
+            editarServicio: editarServicio,
+            setEditarServicio: setEditarServicio,
+            modal1: modal1,
+            setModal1:setModal1
         }}>
             {
                 children

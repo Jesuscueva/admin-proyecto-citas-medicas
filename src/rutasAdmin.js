@@ -7,6 +7,7 @@ import MiCuentaScreen from "./screens/MiCuentaScreen";
 import ComentariosScreen from "./screens/ComentariosScreen";
 import SideBar from "./components/aside/SideBar";
 import PosState from "./components/cardVeterinario/context/PosState";
+import ServicioRouter from './screens/ServicioRouter';
 
 
 const rutasAdmin = () => {
@@ -18,6 +19,7 @@ const rutasAdmin = () => {
 
         <SideBar />
         <Switch>
+            <Route path="/admin/servicios" component={ServicioRouter} />
             <Route path="/admin/calendario" component={CalendarioScreen} />
             <Route path="/admin/veterinarios" component={VeterinariosScreen} />
             <Route path="/admin/comentarios" component={ComentariosScreen} />

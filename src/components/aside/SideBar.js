@@ -12,7 +12,6 @@ const SideBar = () => {
   const toggler = ()=>{
     activo ? setActivo(false) : setActivo(true)
   }
-  console.log(activo)
   return (
     // <div className="">
     //   <div className="bar open" onClick={()=>{
@@ -52,7 +51,12 @@ const SideBar = () => {
           </NavLink>
         </li>
         <li>
-          <button className="salirSesion" onClick={cerrarSesion}>
+          <NavLink className="menu__option" to="/admin/servicios">
+            <i className="icon mr-3 fas fa-user-md"></i>Servicios
+          </NavLink>
+        </li>
+        <li>
+          <button className="btn btn-danger salirSesion" onClick={cerrarSesion}>
             Cerrar Sesión
           </button>
         </li>

@@ -9,9 +9,8 @@ import PosContext from "./context/PosContext";
 
 const ModalVeterinario = () => {
     
-    const { modal, setModal, veterinarioeditar, obtenerVeterinarios} = useContext(PosContext);
+    const { setModal, veterinarioeditar, obtenerVeterinarios} = useContext(PosContext);
     const [formulario, setFormulario] = useState(veterinarioeditar);
-    console.log(formulario)
     const {token} = useContext(AdminContext)
 
     

@@ -6,7 +6,7 @@ import AdminContext from "../../context/adminContext";
 import { useHistory } from "react-router-dom";
 
 const AdminLoginScreen = () => {
-    const { InicioSesion, cerrarSesion } = useContext(AdminContext)
+    const { InicioSesion } = useContext(AdminContext)
 
     const history = useHistory()
     // console.log(history)
@@ -24,11 +24,8 @@ const AdminLoginScreen = () => {
     }
     const submit = (e) =>{
         e.preventDefault()
-        console.log(formulario)
         login(formulario).then((data)=> {
-            console.log(data)
             if(data.access){
-                console.log("USUARIO LOGEADO CORRECTAMENTE")
                 InicioSesion(data.access)
                 history.push("/admin/dashboard")
             }else{

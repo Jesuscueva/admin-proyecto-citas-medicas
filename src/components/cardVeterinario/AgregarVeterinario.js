@@ -33,14 +33,12 @@ const AgregarVeterinario = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(formulario)
     const formData= new FormData()
     formData.append("veterinarioNombre", formulario.veterinarioNombre)
     formData.append("veterinarioApellido", formulario.veterinarioApellido)
     formData.append("veterinarioDescripcion", formulario.veterinarioDescripcion)
     formData.append("veterinaria", formulario.veterinaria)
     formData.append("veterinarioFoto", formulario.veterinarioFoto)
-    console.log(formData)
     Swal.fire({
       title: "¿Seguro de crear Nuevo Veterinario?",
       icon: "question",
@@ -49,7 +47,6 @@ const AgregarVeterinario = () => {
     }).then(rpta => {
         if(rpta.isConfirmed){
             postVeterinario( formData, token ).then(data=>{
-              console.log(data)
                 if(data.content.veterinarioId){
                     setFormulario(formularioVacio)
                     obtenerVeterinarios()

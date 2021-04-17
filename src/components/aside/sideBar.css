@@ -7,6 +7,7 @@
     width: 230px;
     transition: .9s all ease-out;
     margin-right: 0px;
+    overflow: hidden;
 }
 .rutas {
     display: flex;
@@ -100,9 +101,10 @@
     border-top: 1px solid rgba(80, 80, 80, 0.363);
 }
 .salirSesion{
-    width: 220px;
+    /* margin-left: 15px; */
+    margin-top: 347px;
+    width: 235px;
     border: none,
-    
 }
 
 @media screen and (max-width:700px) {
