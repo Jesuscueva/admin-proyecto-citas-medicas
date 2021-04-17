@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { buscarCitasDelUsuario } from "../../servicios/servicios";
 
 
 const Comentario = () => {
 
-    const [usuario, setUsuario] = useState(" ")
+    const [usuario, setUsuario] = useState()
 
     const [citas, setCitas] = useState({})
 
@@ -13,13 +13,19 @@ const Comentario = () => {
             e.target.value
         )
     }
+    const [datosUsuario, setDatosUsuarios] = useState([""])
+    const obtenerDatos = (usuario1)=>{
+        buscarCitasDelUsuario(usuario1).then(data=>{
+            setDatosUsuarios(data)
+        })
+    }
+    useEffect(()=>{
+        obtenerDatos()
+    }, [])
     const submit = e =>{
         e.preventDefault()
-        console.log(usuario)
-        buscarCitasDelUsuario(usuario).then(data=>{
-            console.log(data)
-            setCitas(data)
-        })
+        obtenerDatos(usuario)
+        console.log(datosUsuario)
     }
     // const arrayCitas = citas.content.cita.length
     // console.log(citas.content)
@@ -28,7 +34,7 @@ const Comentario = () => {
         <div className="row mb-5">
             <div className="col">
             <form class="form-inline my-2 my-lg-0" onSubmit={submit}>
-            <input class="col-lg-10 col-sm-10 form-control mr-sm-2" name="buscarUsuario" value={usuario} onChange={buscar} type="search" placeholder="Search" aria-label="Search"/>
+            <input class="col-lg-10 col-sm-10 form-control mr-sm-2" name="buscarUsuario" onChange={buscar} type="search" placeholder="Search" aria-label="Search"/>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
