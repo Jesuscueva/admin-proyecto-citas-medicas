@@ -1,34 +1,28 @@
 import React from 'react'
 import './tablaCitas.css'
 
-const TablaCitas = ({ citas }) => {
+const TablaCitas = () => {
     return (
         <div className="tablaCitas__wrapper shadow">
             <h1>Citas</h1>
-            <table className="table table-striped table-hover table-bordered">
-                <thead className="table-light" >
+            <div className="table-responsive ">
+
+            <table className="table ">
+                <thead >
                     <tr>
-                        <th>Id</th>
-                        <th>Id de Usuario</th>
-                        <th>Fecha</th>
-                        <th>Especialidad</th>
-                        <th>Estado</th>
+                        <th className="th-lg">Nombre del Usuario</th>
+                        <th className="th-lg">Mascota</th>
+                        <th className="th-lg">Fecha</th>
+                        <th className="th-lg">Servicio</th>
+                        <th className="th-lg">Consulta</th>
+                        <th className="th-lg">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-                {
-                    citas.map((cita, i)=> {
-                        return (<tr key={i}>
-                            <th>{cita.id}</th>
-                            <td>{cita.userId}</td>
-                            <td>{cita.fecha}</td>
-                            <td>{cita.especialidad}</td>
-                            <td>{cita.estado}</td>
-                        </tr>)
-                    })
-                }    
+                 Los datos de la citas
                 </tbody>
             </table>    
+            </div>
         </div>
     )
 }

@@ -7,12 +7,12 @@ const CardPerfil = () => {
 
     const {datosConsultorio} = useContext(AdminContext)
     const datosVeterinaria = datosConsultorio.content[0]
-
+    console.log(datosVeterinaria)
 
     return (
         <div>
 
-            <h3>{datosVeterinaria.veterinariaNombre}</h3>
+        <h3>{datosVeterinaria.veterinariaNombre}</h3>
             
 
             <div className="card-body">

@@ -18,14 +18,14 @@ export const getCitas = async() => {
     return data;
 }
 
-export const getComentarios = async() => {
-    const peticion = await fetch(`${URL_BACKEND1}/comentarios`);
+export const buscarCitasDelUsuario = async(usuario) => {
+    const peticion = await fetch(`${URL_DJANGO}/citass?nombre=${usuario}`);
     const data = await peticion.json();
     return data;
 }
 
 export const postComentario = async(objComentario) => {
-    const peticion = await fetch(`${URL_BACKEND1}/comentarios`, {
+    const peticion = await fetch(`${URL_DJANGO}/comentarios`, {
         method: "POST",
         body: JSON.stringify(objComentario), 
         headers: {
@@ -37,6 +37,11 @@ export const postComentario = async(objComentario) => {
 }
 
 
+
+
+/***
+ * Echooo
+ */
 
 export const getDatosConsultorio = async (token) => {
     const peticion = await fetch(`${URL_DJANGO}/veterinaria`, {
@@ -50,12 +55,11 @@ export const getDatosConsultorio = async (token) => {
     return data; 
 }
 
-export const putDatosConsultorio = async (objDatosConsultorio, token)  => {
-    const peticion = await fetch(`${URL_DJANGO}/veterinaria/${objDatosConsultorio.veterinariaId}`, {
+export const putDatosConsultorio = async (formData, token)  => {
+    const peticion = await fetch(`${URL_DJANGO}/veterinaria/1`, {
         method: "PUT", 
-        body: JSON.stringify(objDatosConsultorio),
+        body: formData,
         headers: {
-            "Content-type": "application/json",
             "Authorization": `Bearer ${token}`
         }
     })
@@ -71,5 +75,54 @@ export const putDatosConsultorio = async (objDatosConsultorio, token)  => {
 
 
 /**
- * Modificando con Base de Datos
+ * Modificando con Base de Datos todo echo
  */
+
+
+export const getVeterinarios = async (token) => {
+    const peticion = await fetch(`${URL_DJANGO}/veterinario`, {
+        method: "GET",
+        headers: {
+            "Authorization" : `Bearer ${token}`,
+    },
+    });
+    const data = await peticion.json();
+    return data;
+}
+
+export const postVeterinario = async (formData, token) => {
+
+    const peticion = await fetch(`${URL_DJANGO}/veterinario`,  {
+        method: "POST",
+        body: formData,
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    const data = await peticion.json();
+    return data
+}
+
+
+export const putVeterinario = async(formData, token, id) => {
+    const peticion = await fetch(`${URL_DJANGO}/veterinario/${id}`, {
+        method: "PUT",
+        body: formData,
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    const data = await peticion.json()
+    return data
+}
+
+export const deleteVeterinario = async(vetId, token) => {
+    const peticion = await fetch(`${URL_DJANGO}/veterinario/${vetId}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    const data = await peticion.json()
+    return data
+}

@@ -5,27 +5,47 @@ import AdminContext from './adminContext'
 
 
 const AdminState = ({children}) => {
-    const history2 = useHistory
+    const history2 = useHistory()
     
     const [datosLogin, setDatosLogin] = useState({
         idUsuario : 0,
         nombre : null,
         apellido : null,
         token: null,
-        autenticado : false
+        autenticado : false,
+        cargando: true
     })
-    //TRAERVETERINARIOS
+
+    const cerrarSesion = ()=>{
+        // console.log(history2)
+        localStorage.removeItem("token")
+        // history2.replace("/")
+        setDatosLogin({
+            autenticado: false,
+            nombre: null,
+            apellido: null,
+            token: null,
+            idUsuario: 0
+        })
+    }
+
+
+
+    //TRAERVETERINARIA
     const [datosConsultorio, setDatosConsultorio] = useState([""]);
 
-    useEffect(()=> {
+    const obtenerVeterinaria = () => {
         getDatosConsultorio(datosLogin.token).then((data)=> {
-            // console.log(data)
+            console.log(data)
             setDatosConsultorio(data);
         })
+    }
+    useEffect(()=> {
+        obtenerVeterinaria()
     },[]);
 
 
-
+ 
 
     const InicioSesion = token => {
         const payload = token.split(".")[1]
@@ -40,8 +60,9 @@ const AdminState = ({children}) => {
                 autenticado: true,
                 token: token,
                 idUsuario: convertirJson.usuarioTipo,
-                nombre: convertirJson.ususarioNombre,
-                apellido: convertirJson.usuarioApellido
+                nombre: convertirJson.usuarioNombre,
+                apellido: convertirJson.usuarioApellido,
+                cargando: false
             })
         }
         else{
@@ -49,40 +70,10 @@ const AdminState = ({children}) => {
         }
     }
 
-    const cerrarSesion = ()=>{
-        console.log(history2)
-        // localStorage.removeItem("token")
-        // history.replace("/")
-        // setDatosLogin({
-        //     autenticado: false,
-        //     nombre: null,
-        //     apellido: null,
-        //     token: null,
-        //     idUsuario: 0
-        // })
-    }
 
-    const sesionLocalStorage = ()=>{
-        const token = localStorage.getItem("token")
-        if (token) {
-            const payload = token.split(".")[1]
-            const desencriptar = window.atob(payload)
-            const convertirJson = JSON.parse(desencriptar)
-            setDatosLogin({
-                autenticado: true,
-                token: token,
-                idUsuario: convertirJson.usuarioTipo,
-                nombre: convertirJson.usuarioNombre,
-                apellido: convertirJson.usuarioApellido                
-            })
-        }else{
-            setDatosLogin({
-                autenticado: false,
-                token: null,
-                idUsuario: null,
-                nombre: null,
-                apellido: null                
-            })
+    const sesionLocalStorage = ()=>{ 
+        if (localStorage.getItem("token")){
+            InicioSesion(localStorage.getItem("token"))
         }
     }
 
@@ -99,7 +90,9 @@ const AdminState = ({children}) => {
             idUsuario: datosLogin.idUsuario,
             InicioSesion: InicioSesion,
             cerrarSesion: cerrarSesion,
-            datosConsultorio: datosConsultorio
+            datosConsultorio: datosConsultorio,
+            obtenerVeterinaria: obtenerVeterinaria,
+            cargando: datosLogin.cargando
         }}>
             {
                 children

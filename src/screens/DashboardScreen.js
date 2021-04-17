@@ -60,13 +60,13 @@ const DashboardScreen = () => {
 
       <div className="row bg-gray p-5">
 
-        <div className="col-xl-8 col-md-12 col-sm-12">
+        <div className="col-xl-12 col-md-12 col-sm-12">
           <TablaCitas citas={citas}/>
         </div>
 
-        <div className="col-xl-4 col-md-12 col-sm-12">
+        {/* <div className="col-xl-4 col-md-12 col-sm-12">
           <HistoricoMensual citas={citas}/>
-        </div>
+        </div> */}
 
 
       </div>

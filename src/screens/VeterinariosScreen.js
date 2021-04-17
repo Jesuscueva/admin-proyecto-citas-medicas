@@ -12,15 +12,17 @@ import "../styles.css";
 import AgregarVeterinario from "../components/cardVeterinario/AgregarVeterinario";
 import Swal from "sweetalert2";
 import { deleteVeterinario } from "../servicios/servicios";
+import AdminContext from "../context/adminContext";
 
 const VeterinariosScreen = () => {
   const {setModal,modal ,setVeterinarioEditar, veterinarios,  obtenerVeterinarios } = useContext(PosContext);
+  const {token} = useContext(AdminContext)
 
   const [modalPrueba, setModalPrueba] = useState(false)
 
   const [masInfo, setMasInfo] = useState(false)
   
-
+  
   const eliminar = vetId => {
     // console.log(vetId)
     Swal.fire({
@@ -30,8 +32,8 @@ const VeterinariosScreen = () => {
       showCancelButton: true
     }).then(rpta => {
       if(rpta.isConfirmed){
-        deleteVeterinario(vetId).then((data)=>{
-          if(data.id){
+        deleteVeterinario(vetId, token).then((data)=>{
+          if(data.success){
             obtenerVeterinarios()
             Swal.fire({
               title: "Eliminado!",
@@ -40,6 +42,8 @@ const VeterinariosScreen = () => {
               showCancelButton: false,
               position: "top-end"
             })
+          }else{
+            alert("error al eliminar")
           }
 
         })
@@ -51,7 +55,7 @@ const VeterinariosScreen = () => {
     <div className="content__wrapper bg-gray">
       <div
         className="row bg-gradient-primary text-white pl-5 align-items-center"
-        style={{ height: "12rem" }}
+        style={{ height: "8rem" }}
       >
         <h1>Lista de Veterinarios</h1>
       </div>
@@ -69,7 +73,10 @@ const VeterinariosScreen = () => {
           veterinarios.content.map((veterinario, i) => {
           return (
             <div className="col-xl-4 col-md-6 col-sm-12 mt-5">
-              <div className="veterinario_card">
+              <div className="veterinario_card text-center">
+                <figure className="vaterinarioFoto">
+                  <img  className="foto img-fluid" src={`http://127.0.0.1:8000${veterinario.veterinarioFoto}`} alt="foto del veterinario"/>
+                </figure>
                 <h3 className="nombre_vete">{veterinario.veterinarioNombre +" " + veterinario.veterinarioApellido}</h3>
                 <p className="parrafo_descripcion">{veterinario.veterinarioDescripcion.substr(0, 80)}... <a  >Leer más</a> </p>
                 <p className="contenedor__btn">
@@ -84,7 +91,7 @@ const VeterinariosScreen = () => {
                   </button>
                   <button className="btn btn-danger" 
                   onClick={()=>{
-                    eliminar(veterinario.id)
+                    eliminar(veterinario.veterinarioId)
                   }}
                   >Eliminar</button>
                 </p>

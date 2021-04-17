@@ -4,11 +4,10 @@ import "./formularioMiCuenta.css";
 import "./../../styles.css";
 import AdminContext from "../../context/adminContext";
 
-const FormularioMiCuenta = ({ setDatosConsultorio }) => {
-  const {idUsuario, token} = useContext(AdminContext)
+const FormularioMiCuenta = () => {
+  const {obtenerVeterinaria, token} = useContext(AdminContext)
 
   const formularioVacio = {
-    veterinariaId: "1",
     veterinariaNombre: "",
     veterinariaLogo: "",
     veterinariaDescripcion: "",
@@ -26,13 +25,28 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
       [e.target.name]: e.target.value,
     });
   };
+  const valorImg = (e) =>{
+    setFormulario({
+      ...formulario,
+      veterinariaLogo: e.target.files[0],
+    })
+  }
 
   const editarFormulario = (e) => {
     e.preventDefault();
     console.log(formulario)
-    putDatosConsultorio(formulario, token).then((data) => {
+    const formData= new FormData()
+    formData.append("veterinariaNombre", formulario.veterinariaNombre)
+    formData.append("veterinariaDescripcion", formulario.veterinariaDescripcion)
+    formData.append("veterinariaTelefono", formulario.veterinariaTelefono)
+    formData.append("veterinariaDireccion", formulario.veterinariaDireccion)
+    formData.append("veterinariaHorario", formulario.veterinariaHorario)
+    formData.append("veterinariaLogo", formulario.veterinariaLogo)
+    formData.append("veterinariaCorreo", formulario.veterinariaCorreo)
+    putDatosConsultorio(formData, token).then((data) => {
       setFormulario(formularioVacio);
-      setDatosConsultorio(data);
+      console.log(data)
+      obtenerVeterinaria();
     });
   };
 
@@ -40,9 +54,9 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
     <div className="formularioMiCuenta__wrapper shadow bg-gray">
       <h3 className="mb-5 p-3 bg-white">Mi Cuenta</h3>
 
-      <form class="row p-5">
-        <div class="col-12">
-          <label for="veterinariaNombre" class="form-label">
+      <form className="row p-5">
+        <div className="col-12">
+          <label for="veterinariaNombre" className="form-label">
             Nombre Comercial
           </label>
           <input
@@ -50,26 +64,25 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
             value={formulario.veterinariaNombre}
             name="veterinariaNombre"
             type="text"
-            class="form-control mb-4"
+            className="form-control mb-4"
             id="veterinariaNombre"
           />
         </div>
-        <div class="col-md-6">
-          <label for="veterinariaLogo" class="form-label">
+        <div className="col-md-6">
+          <label for="veterinariaLogo" className="form-label">
             Logo Empresa
           </label>
           <input
-            onChange={handleChange}
-            value={formulario.veterinariaLogo}
+            onChange={valorImg}
             name="veterinariaLogo"
-            type="text"
-            class="form-control mb-4"
+            type="file"
+            className="form-control mb-4"
             id="veterinariaLogo"
           />
         </div>
 
-        <div class="col-md-6">
-          <label for="veterinariaCorreo" class="form-label">
+        <div className="col-md-6">
+          <label for="veterinariaCorreo" className="form-label">
             Email
           </label>
           <input
@@ -77,13 +90,13 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
             value={formulario.veterinariaCorreo}
             name="veterinariaCorreo"
             type="email"
-            class="form-control mb-4"
+            className="form-control mb-4"
             id="veterinariaCorreo"
           />
         </div>
 
-        <div class="col-md-6">
-          <label for="veterinariaTelefono" class="form-label">
+        <div className="col-md-6">
+          <label for="veterinariaTelefono" className="form-label">
             Celular
           </label>
           <input
@@ -91,13 +104,13 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
             value={formulario.veterinariaTelefono}
             name="veterinariaTelefono"
             type="text"
-            class="form-control mb-4"
+            className="form-control mb-4"
             id="veterinariaTelefono"
           />
         </div>
 
-        <div class="col-md-6">
-          <label for="inputHorario" class="form-label">
+        <div className="col-md-6">
+          <label for="inputHorario" className="form-label">
             Horario
           </label>
           <input
@@ -105,14 +118,14 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
             value={formulario.veterinariaHorario}
             name="veterinariaHorario"
             type="text"
-            class="form-control mb-4"
+            className="form-control mb-4"
             id="inputHorario"
           />
         </div>
 
 
-        <div class="col-12">
-          <label for="veterinariaDireccion" class="form-label">
+        <div className="col-12">
+          <label for="veterinariaDireccion" className="form-label">
             Direccion
           </label>
           <input
@@ -120,14 +133,14 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
             value={formulario.veterinariaDireccion}
             name="veterinariaDireccion"
             type="text"
-            class="form-control mb-4"
+            className="form-control mb-4"
             id="veterinariaDireccion"
             placeholder="Av Arequipa 4000"
           />
         </div>
 
-        <div class="col-12">
-          <label for="veterinariaDescripcion" class="form-label">
+        <div className="col-12">
+          <label for="veterinariaDescripcion" className="form-label">
             Sobre nosotros
           </label>
           <textarea
@@ -135,7 +148,7 @@ const FormularioMiCuenta = ({ setDatosConsultorio }) => {
             value={formulario.veterinariaDescripcion}
             name="veterinariaDescripcion"
             rows="4"
-            class="form-control mb-4"
+            className="form-control mb-4"
             id="veterinariaDescripcion"
           ></textarea>
         </div>

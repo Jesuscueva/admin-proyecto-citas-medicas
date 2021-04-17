@@ -43,7 +43,7 @@ const SideBar = () => {
         </li>
         <li>
           <NavLink className="menu__option" to="/admin/comentarios">
-            <i className="icon mr-3 fas fa-user-md"></i>Reseñas
+            <i className="icon mr-3 fas fa-user-md"></i>Buscar Usuario
           </NavLink>
         </li>
         <li>
@@ -52,9 +52,9 @@ const SideBar = () => {
           </NavLink>
         </li>
         <li>
-          {/* <button className="salirSesion" onClick={cerrarSesion}>
+          <button className="salirSesion" onClick={cerrarSesion}>
             Cerrar Sesión
-          </button> */}
+          </button>
         </li>
         <li>
           <NavLink className="menu__option miCuenta" to="/admin/miCuenta">

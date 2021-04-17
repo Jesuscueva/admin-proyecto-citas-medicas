@@ -8,27 +8,24 @@ const ComentariosScreen = () => {
 
   let [comentarios, setComentarios] = useState([]);
 
-  useEffect(() => {
-    getComentarios().then((data) => {
-      console.log(data);
-      setComentarios(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getComentarios().then((data) => {
+  //     console.log(data);
+  //     setComentarios(data);
+  //   });
+  // }, []);
 
   return (
     <div className="content__wrapper bg-gray">
       <div className="row bg-gradient-primary text-white pl-5 align-items-center" style={{height:'12rem'}}>
-        <h1>Lista De Reseñas</h1>
+        <h1>Buscar Usuario</h1>
       </div>
 
       <div className="row p-5 bg-gray" style={{height:"calc(100vh - 12rem)", overflowY:'scroll'}}>
-        {comentarios.map((comentario) => {
-          return (
-            <div className="col-12 col-sm-12  mb-5">
-              <Comentario comentario={comentario} />
+            <div className="col-12 col-sm-12  mb-12">
+              <Comentario />
             </div>
-          );
-        })}
+
       </div>
     </div>
   );
