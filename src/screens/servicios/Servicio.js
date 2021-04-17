@@ -82,7 +82,7 @@ const Servicio = () => {
                                     <th>{dat.servicioId}</th>
                                         <th>{dat.servicioNombre}</th>
                                         <th>{dat.servicioDescripcion}</th>
-                                        <th><img src={`http://127.0.0.1:8000${dat.servicioFoto}`} width="60" height="60" alt=""/></th>
+                                        <th><img src={`https://app-citas-grupo5.herokuapp.com${dat.servicioFoto}`} width="60" height="60" alt=""/></th>
                                         <th><button onClick={()=>{
                                             eliminar(dat.servicioId)
                                         }} class="btn btn-danger">Eliminar</button>

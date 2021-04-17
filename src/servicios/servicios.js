@@ -1,7 +1,7 @@
 
 
 ///BACKEND DJANGO
-const URL_DJANGO = "http://127.0.0.1:8000"
+const URL_DJANGO = "https://app-citas-grupo5.herokuapp.com"
 
 
 
@@ -64,7 +64,7 @@ export const deleteServicios = async(vetId, token) => {
 
 
  export const getCitas = async() => {
-    const peticion = await fetch(`${URL_DJANGO}/citas`);
+    const peticion = await fetch(`${URL_DJANGO}/traerCita`);
     const data = await peticion.json();
     return data;
 }

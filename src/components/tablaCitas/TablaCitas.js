@@ -8,6 +8,7 @@ const TablaCitas = () => {
     const [datosUsuario, setDatosUsuarios] = useState([])
     const obtenerDatos = ()=>{
         getCitas().then(data=>{
+            // console.log(data)
             setDatosUsuarios(data)
         })
     }
@@ -53,8 +54,9 @@ const TablaCitas = () => {
                                 </div>
                             :  
                                 datosUsuario.content.map(
-                                (cita)=>{
+                                        (cita)=>{
                                     return <tr>
+                                    
                                                 <th>{cita.cliente? cita.cliente.usuarioNombre + " " + cita.cliente.usuarioApellido : "Nombre"}</th>
                                                 <th>{cita.cliente? cita.cliente.mascota[0].mascotaNombre: "---"}</th>
                                                 <th>{cita.citaFecha}</th>

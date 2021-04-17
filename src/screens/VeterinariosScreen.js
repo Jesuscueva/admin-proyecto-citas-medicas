@@ -75,10 +75,10 @@ const VeterinariosScreen = () => {
             <div className="col-xl-4 col-md-6 col-sm-12 mt-5">
               <div className="veterinario_card text-center">
                 <figure className="vaterinarioFoto">
-                  <img  className="foto img-fluid" src={`http://127.0.0.1:8000${veterinario.veterinarioFoto}`} alt="foto del veterinario"/>
+                  <img  className="foto img-fluid" src={`https://app-citas-grupo5.herokuapp.com/media/${veterinario.veterinarioFoto}`} alt="foto del veterinario"/>
                 </figure>
                 <h3 className="nombre_vete">{veterinario.veterinarioNombre +" " + veterinario.veterinarioApellido}</h3>
-                <p className="parrafo_descripcion">{veterinario.veterinarioDescripcion.substr(0, 80)}... <a  >Leer más</a> </p>
+                <p className="parrafo_descripcion">{veterinario.veterinarioDescripcion}</p>
                 <p className="contenedor__btn">
                   <button
                     onClick={() => {

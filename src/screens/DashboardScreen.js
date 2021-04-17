@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
- 
-import HistoricoMensual from "./../components/historicoMensual/HistoricoMensual";
+import React, { useState} from "react";
+
 import TablaCitas from "./../components/tablaCitas/TablaCitas";
 import "./../styles.css";
-import { getCitas, getDatosConsultorio, getUsuarios } from "./../servicios/servicios"
+
 import BarraDeEstadisticas from "../components/barraDeEstadisticas/BarraDeEstadisticas";
 
 const DashboardScreen = () => {
   
-  const [citas, setCitas] = useState(['']);
-  const [admin, setAdmin] = useState(['']);
+  const [citas] = useState(['']);
+  const [admin] = useState(['']);
   const [cantidadDeUsuarios, setCantidadDeUsuarios] = useState([]);
   const [citasXDia, setCitasXDia] = useState([]);
   const [citasXMes, setCitasXMes] = useState([]);

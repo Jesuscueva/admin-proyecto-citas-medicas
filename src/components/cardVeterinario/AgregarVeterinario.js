@@ -10,6 +10,7 @@ const formularioVacio = {
   veterinarioDescripcion: "",
   veterinaria: 1,
   veterinarioFoto: "",
+  veterinarioEstado: true
 };
 const AgregarVeterinario = () => {
 
@@ -37,6 +38,7 @@ const AgregarVeterinario = () => {
     formData.append("veterinarioNombre", formulario.veterinarioNombre)
     formData.append("veterinarioApellido", formulario.veterinarioApellido)
     formData.append("veterinarioDescripcion", formulario.veterinarioDescripcion)
+    formData.append("veterinarioEstado", formulario.veterinarioEstado)
     formData.append("veterinaria", formulario.veterinaria)
     formData.append("veterinarioFoto", formulario.veterinarioFoto)
     Swal.fire({
